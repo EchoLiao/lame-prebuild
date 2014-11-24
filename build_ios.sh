@@ -6,7 +6,7 @@
 major=3
 minor=99
 micro=5
-mmcro=0
+mmcro=1
 
 SDK_VERS=8.1
 XCD_ROOT="/Applications/Xcode.app/Contents/Developer"
@@ -30,7 +30,7 @@ rm -rf $srcs $buid $dest && mkdir -p $srcs $buid
   wget http://sourceforge.net/projects/lame/files/lame/${major}.${minor}/$pakt
 }
 
-archs="armv7 armv7s arm64 i386"
+archs="armv7 armv7s arm64 i386 x86_64"
 
 for a in $archs; do
   case $a in
@@ -38,9 +38,9 @@ for a in $archs; do
       sys_root=${SDK_ROOT}
       host=arm-apple-darwin9
       ;;
-    i386)
+    i386|x86_64)
       sys_root=${SDK_SML_ROOT}
-      host=i686-apple-darwin9
+      host=${a}-apple-darwin9
       ;;
   esac
   prefix=$insl/$a && rm -rf $prefix && mkdir -p $prefix
